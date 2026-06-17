@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub加速下载代理 - 快速访问 GitHub 文件</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.ico">
+    <link rel="canonical" href="https://gh-proxy.com/">
+    <link rel="alternate" hreflang="zh" href="https://gh-proxy.com/">
+    <link rel="alternate" hreflang="en" href="https://gh-proxy.com/en">
+    <link rel="alternate" hreflang="x-default" href="https://gh-proxy.com/">
+    <meta name="description"
+        content="GitHub Proxy，GitHub加速下载代理服务，支持 Releases、Raw、Archive、clone 等资源下载加速，解决 GitHub下载访问慢的问题。">
+    <meta name="keywords"
+        content="GitHub代理, GitHub加速, GitHub镜像, GitHub下载加速, Releases下载加速, Raw加速, ghproxy, gh-proxy, GitHub proxy,git clone 代理,git clone 加速,github 静态资源加速">
+
+    <!-- SEO Directives -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="baiduspider" content="index, follow">
+    <meta name="360spider" content="index, follow">
+    <meta name="sogouspider" content="index, follow">
+    <meta name="author" content="GitHub加速工具">
+    <meta name="copyright" content="GitHub加速工具">
+
+    <!-- Mobile App Settings -->
+    <meta name="theme-color" content="#1e293b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="GitHub加速下载代理">
+    <meta property="og:description" content="GitHub加速下载代理服务，支持 Releases、Raw、Archive 等资源下载加速">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gh-proxy.com/">
+    <meta property="og:site_name" content="GitHub加速下载代理">
+    <meta property="og:image" content="https://gh-proxy.com/favicon.ico">
+    <meta property="og:locale" content="zh_CN">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="GitHub加速下载代理 - 快速访问 GitHub 文件">
+    <meta name="twitter:description"
+        content="GitHub Proxy，GitHub加速下载代理服务，支持 Releases、Raw、Archive、clone 等资源下载加速，解决 GitHub下载访问慢的问题。">
+    <meta name="twitter:image" content="https://gh-proxy.com/favicon.ico">
+
+    <!-- Domain Redirection -->
+    <script>!(function () { var _0x3a4f = ['aG9zdG5hbWU=', 'Z2gtcHJveHkuY29t', 'aHR0cHM6Ly9naC1wcm94eS5jb20=', 'ZW5kc1dpdGg=']; var _0x5d21 = window['\x6c\x6f\x63\x61\x74\x69\x6f\x6e'][atob(_0x3a4f[0])]; var _0x29ac = atob(_0x3a4f[1]); var _0x1c8b = atob(_0x3a4f[2]); if (_0x5d21 !== _0x29ac && !_0x5d21[atob(_0x3a4f[3])]('\x2e' + _0x29ac)) { (window['\x74\x6f\x70'] || window)['\x6c\x6f\x63\x61\x74\x69\x6f\x6e']['\x68\x72\x65\x66'] = _0x1c8b; } })();</script>
+
+    <!-- Dark Mode Initializer -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                // Auto by local time (6:00 - 18:00 is light, otherwise dark)
+                const hour = new Date().getHours();
+                if (hour < 6 || hour >= 18) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.6.0/waline.css" crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8549247415463520"
+        crossorigin="anonymous"></script>
+    <script defer src="https://u.gh-proxy.com/script.js"
+        data-website-id="6e921313-57ba-449f-a15d-5fdb2de35cbf"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.0/qrcode.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6', // Blue
+                        primaryHover: '#2563eb',
+                        darkNav: '#1e293b',
+                        cf: '#f97316', // Cloudflare Orange
+                        cfBg: 'rgba(249, 115, 22, 0.1)',
+                        hk: '#10b981', // Green
+                        hkBg: 'rgba(16, 185, 129, 0.1)',
+                        cdn: '#8b5cf6', // Fastly Purple
+                        cdnBg: 'rgba(139, 92, 246, 0.1)',
+                        v6: '#06b6d4', // Cyan for v6/youxuan
+                        v6Bg: 'rgba(6, 182, 212, 0.1)',
+                        error: '#ef4444',
+                        success: '#10b981'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['SF Mono', 'Menlo', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YTL8XEY42Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YTL8XEY42Z');
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            background: #3b82f6;
+        }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .group:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .toast-enter {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .toast-show {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        /* 修复 Tailwind CSS 对 Waline 评论框样式的干扰 */
+        #waline button {
+            border: 1px solid transparent;
+            background-color: initial;
+            padding: revert;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #waline button.wl-btn {
+            display: inline-block;
+            border: 1px solid var(--waline-border-color, #ddd);
+            background: var(--waline-theme-color, #3b82f6);
+            color: #fff;
+            padding: 0.5em 1.5em !important;
+            border-radius: 0.5em;
+            font-size: 0.875em;
+        }
+
+        #waline button.wl-btn:hover {
+            background: var(--waline-active-color, #2563eb);
+        }
+
+        #waline .wl-panel button {
+            box-shadow: none !important;
+        }
+
+        #waline img {
+            display: inline-block !important;
+            max-width: revert !important;
+        }
+
+        #waline svg {
+            display: inline !important;
+        }
+
+        #waline ul,
+        #waline ol {
+            list-style: revert !important;
+            padding-left: 1.5rem !important;
+            margin: revert !important;
+        }
+
+        #waline h1,
+        #waline h2,
+        #waline h3,
+        #waline h4,
+        #waline h5,
+        #waline h6 {
+            font-size: revert !important;
+            font-weight: bold !important;
+            margin: revert !important;
+        }
+
+        #waline input,
+        #waline textarea {
+            padding: 0.5em !important;
+            background: revert;
+        }
+
+        #waline pre,
+        #waline code {
+            white-space: pre-wrap !important;
+            word-break: break-all;
+        }
+
+        /* Dark Mode overrides */
+        html.dark body {
+            background-color: #0f172a !important;
+            /* bg-slate-900 */
+            color: #f1f5f9 !important;
+            /* text-slate-100 */
+        }
+
+        html.dark .text-slate-900,
+        html.dark h2,
+        html.dark h3,
+        html.dark h4,
+        html.dark .text-slate-800,
+        html.dark label {
+            color: #ffffff !important;
+        }
+
+        html.dark .text-slate-800 {
+            color: #e2e8f0 !important;
+        }
+
+        html.dark .text-slate-700 {
+            color: #cbd5e1 !important;
+        }
+
+        html.dark .text-slate-600 {
+            color: #94a3b8 !important;
+        }
+
+        html.dark .text-slate-500 {
+            color: #64748b !important;
+        }
+
+        html.dark .bg-white {
+            background-color: #1e293b !important;
+            /* bg-slate-800 */
+            border-color: #334155 !important;
+        }
+
+        html.dark .border-slate-200,
+        html.dark .border-slate-200\/80 {
+            border-color: #334155 !important;
+        }
+
+        html.dark .bg-slate-50 {
+            background-color: #0f172a !important;
+            /* bg-slate-900 */
+            border-color: #334155 !important;
+        }
+
+        html.dark input {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #f1f5f9 !important;
+        }
+
+        html.dark pre,
+        html.dark #shili-code,
+        html.dark #shili-code-container,
+        html.dark .relative.bg-slate-900,
+        html.dark #guide-card {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        html.dark pre {
+            background-color: #0b0f19 !important;
+        }
+
+        html.dark code {
+            color: #e2e8f0 !important;
+        }
+
+        html.dark .format-btn {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+            border-color: #334155 !important;
+        }
+
+        html.dark .format-btn:hover {
+            background-color: #334155 !important;
+            color: #ffffff !important;
+        }
+
+        html.dark .bg-slate-50.border.border-slate-200.rounded-xl {
+            background-color: #111827 !important;
+            border-color: #334155 !important;
+        }
+
+        html.dark .link-item {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        html.dark .copy-btn {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+            border-color: #334155 !important;
+        }
+
+        html.dark .copy-btn:hover {
+            background-color: #22c55e !important;
+            /* bg-green-500 */
+            color: #ffffff !important;
+            border-color: #22c55e !important;
+        }
+
+        html.dark .open-btn {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+            border-color: #334155 !important;
+        }
+
+        html.dark .open-btn:hover {
+            background-color: #3b82f6 !important;
+            /* bg-primary */
+            color: #ffffff !important;
+            border-color: #3b82f6 !important;
+        }
+
+        html.dark .qr-btn {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+            border-color: #334155 !important;
+        }
+
+        html.dark .qr-btn:hover {
+            background-color: #8b5cf6 !important;
+            /* bg-cdn */
+            color: #ffffff !important;
+            border-color: #8b5cf6 !important;
+        }
+
+        html.dark #formattedLinkOutput div[id$="Link"] {
+            background-color: rgba(15, 23, 42, 0.6) !important;
+            border-color: #334155 !important;
+            color: #60a5fa !important;
+            /* Premium light blue link color */
+        }
+
+        html.dark #shili-toggle-btn {
+            background-color: #1e293b !important;
+            color: #3b82f6 !important;
+            border: 1px solid rgba(59, 130, 246, 0.4) !important;
+        }
+
+        html.dark #shili-toggle-btn:hover {
+            background-color: rgba(59, 130, 246, 0.15) !important;
+            color: #60a5fa !important;
+            border-color: #3b82f6 !important;
+        }
+
+        html.dark #config-tabs {
+            background-color: #1e293b !important;
+            border-bottom: none !important;
+        }
+
+        html.dark .tab-btn {
+            border-bottom-color: transparent !important;
+        }
+
+        html.dark .tab-btn.text-slate-600 {
+            color: #94a3b8 !important;
+        }
+
+        html.dark .tab-btn.text-slate-600:hover {
+            color: #ffffff !important;
+        }
+
+        html.dark .tab-btn.text-primary {
+            color: #3b82f6 !important;
+            border-bottom-color: #3b82f6 !important;
+        }
+
+        html.dark #waline,
+        html.dark #waline * {
+            --waline-theme-color: #3b82f6 !important;
+            --waline-active-color: #2563eb !important;
+            --waline-bg-color: #1e293b !important;
+            --waline-bg-color-light: #0f172a !important;
+            --waline-border-color: #334155 !important;
+            --waline-text-color: #f1f5f9 !important;
+            --waline-disable-color: #475569 !important;
+            --waline-info-bg-color: #334155 !important;
+        }
+
+        html.dark #waline .wl-panel,
+        html.dark #waline .wl-header,
+        html.dark #waline .wl-input,
+        html.dark #waline .wl-editor,
+        html.dark #waline .wl-card,
+        html.dark #waline .wl-content,
+        html.dark #waline textarea,
+        html.dark #waline input {
+            background-color: #1e293b !important;
+            color: #f1f5f9 !important;
+            border-color: #334155 !important;
+        }
+
+        html.dark #waline .wl-editor:focus,
+        html.dark #waline .wl-input:focus,
+        html.dark #waline textarea:focus,
+        html.dark #waline input:focus {
+            background-color: #0f172a !important;
+        }
+
+        html.dark #waline .wl-header {
+            border-bottom: 1px solid #334155 !important;
+        }
+
+        html.dark #waline .wl-meta span {
+            background-color: #334155 !important;
+            color: #cbd5e1 !important;
+        }
+
+        html.dark #waline .wl-btn {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+            border-color: #334155 !important;
+        }
+
+        html.dark #waline .wl-btn.wl-btn-primary {
+            background-color: #3b82f6 !important;
+            color: #ffffff !important;
+            border-color: #3b82f6 !important;
+        }
+
+        html.dark #waline .wl-quote {
+            border-left: 0.25em solid #334155 !important;
+            background-color: #0f172a !important;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 767px) {
+            .mobile-menu-enter {
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                transition: all 0.3s ease-out;
+            }
+
+            .mobile-menu-show {
+                max-height: 800px;
+                opacity: 1;
+            }
+
+            #navbarLinks {
+                height: auto !important;
+                padding-bottom: 1.5rem !important;
+            }
+
+            #navbarLinks .group {
+                height: auto !important;
+            }
+
+            #navbarLinks .nav-link {
+                height: auto !important;
+            }
+
+            .dropdown-menu {
+                position: static !important;
+                display: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                box-shadow: none !important;
+                border-top: none !important;
+                border-left: 3px solid #3b82f6 !important;
+                margin-left: 1.5rem !important;
+                margin-top: 0.5rem !important;
+                background: rgba(30, 41, 59, 0.5) !important;
+                width: calc(100% - 3rem) !important;
+                border-radius: 0.5rem !important;
+            }
+
+            .group.active .dropdown-menu {
+                display: flex !important;
+            }
+
+            .group.active .dropdown-arrow {
+                transform: rotate(180deg) !important;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        /* Waline 二级评论样式优化 */
+        #waline .wl-quote,
+        html.dark #waline .wl-quote {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+
+        #waline .wl-quote .wl-card,
+        html.dark #waline .wl-quote .wl-card {
+            background: transparent !important;
+            background-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Waline 评论内超链接自动换行 */
+        #waline .wl-content a {
+            word-break: break-all !important;
+            overflow-wrap: break-word !important;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col pt-[60px]">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full h-[60px] bg-darkNav shadow-md z-50 px-4 flex items-center">
+        <div class="max-w-6xl mx-auto w-full h-full flex justify-between items-center relative">
+            <a href="https://gh-proxy.com/" class="flex items-center gap-3 h-full no-underline group">
+                <i class="fab fa-github text-white text-2xl group-hover:scale-110 transition-transform"></i>
+                <h1
+                    class="text-xl font-bold text-gradient whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]">
+                    GitHub加速</h1>
+            </a>
+
+            <div class="flex items-center gap-4 h-full">
+                <div id="navbarLinks"
+                    class="hidden md:flex gap-5 h-full items-center absolute md:static top-[60px] left-0 w-full md:w-auto bg-darkNav md:bg-transparent shadow-lg md:shadow-none flex-col md:flex-row pb-4 md:pb-0 z-40 mobile-menu-enter">
+
+                    <!-- 自用机场推荐 -->
+                    <div class="h-full flex items-center relative w-full md:w-auto px-4 md:px-0 cursor-pointer">
+                        <a href="https://gh-proxy.com/go/https://jujiasu.com/register?code=2ARbL9HG" target="_blank"
+                            class="nav-link text-amber-400 hover:text-amber-300 font-medium flex items-center gap-2 h-full py-3 md:py-0 px-3 transition-colors text-sm w-full no-underline">
+                            <i class="fa-solid fa-plane-departure text-xs"></i>
+                            <span>自用机场推荐</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Services Dropdown -->
+                    <div class="group h-full flex items-center relative w-full md:w-auto px-4 md:px-0 cursor-pointer">
+                        <div
+                            class="nav-link text-white font-medium flex items-center gap-2 h-full py-3 md:py-0 px-3 transition-colors text-sm w-full active">
+                            <i class="fa-solid fa-rocket text-xs"></i>
+                            <span>加速服务</span>
+                            <i
+                                class="fas fa-chevron-down dropdown-arrow text-[10px] ml-1 transition-transform duration-300"></i>
+                        </div>
+                        <div
+                            class="dropdown-menu md:absolute top-full left-0 bg-darkNav min-w-[220px] rounded-lg shadow-xl border-t-2 md:border-t-[3px] border-primary z-50 flex flex-col hidden group-hover:flex md:block md:mt-0 mt-2">
+                            <a href="https://gh-proxy.com/"
+                                class="flex items-center gap-3 px-4 py-3 text-white hover:bg-primary/15 border-l-[3px] border-primary transition-all text-sm rounded-t-lg"><i
+                                    class="fab fa-github text-xs w-[18px] text-center"></i><span>GitHub 文件加速</span></a>
+                            <a href="https://gh-proxy.com/docker"
+                                class="flex items-center gap-3 px-4 py-3 text-white/85 hover:text-white hover:bg-primary/15 hover:border-l-[3px] hover:border-primary transition-all text-sm border-l-[3px] border-transparent"><i
+                                    class="fa-brands fa-docker text-xs w-[18px] text-center"></i><span>Docker
+                                    镜像加速</span></a>
+                            <a href="https://gh-proxy.com/sourceforge/"
+                                class="flex items-center gap-3 px-4 py-3 text-white/85 hover:text-white hover:bg-primary/15 hover:border-l-[3px] hover:border-primary transition-all text-sm border-l-[3px] border-transparent"><i
+                                    class="fas fa-cloud-download-alt text-xs w-[18px] text-center"></i><span>SourceForge
+                                    加速</span></a>
+                            <a href="https://gh-proxy.com/opensheet/"
+                                class="flex items-center gap-3 px-4 py-3 text-white/85 hover:text-white hover:bg-primary/15 hover:border-l-[3px] hover:border-primary transition-all text-sm border-l-[3px] border-transparent"><i
+                                    class="fa-solid fa-table text-xs w-[18px] text-center"></i><span>Google表格转JSON</span></a>
+                            <div class="h-[1px] bg-white/10 my-2"></div>
+                            <a href="https://gh-proxy.com/speedtest"
+                                class="flex items-center gap-3 px-4 py-3 text-white/85 hover:text-white hover:bg-primary/15 hover:border-l-[3px] hover:border-primary transition-all text-sm border-l-[3px] border-transparent"><i
+                                    class="fa-brands fa-cloudflare text-xs w-[18px] text-center"></i><span>节点测速</span></a>
+                            <a href="https://gh-proxy.com/analytics/fastly"
+                                class="flex items-center gap-3 px-4 py-3 text-white/85 hover:text-white hover:bg-primary/15 hover:border-l-[3px] hover:border-primary transition-all text-sm border-l-[3px] border-transparent"><i
+                                    class="fa-solid fa-chart-simple text-xs w-[18px] text-center"></i><span>实时数据</span></a>
+                            <a href="https://gh-proxy.com/analytics/"
+                                class="flex items-center gap-3 px-4 py-3 text-white/85 hover:text-white hover:bg-primary/15 hover:border-l-[3px] hover:border-primary transition-all text-sm rounded-b-lg border-l-[3px] border-transparent"><i
+                                    class="fa-solid fa-chart-line text-xs w-[18px] text-center"></i><span>统计数据</span></a>
+                        </div>
+                    </div>
+
+                    <!-- Resources Dropdown -->
+                    <div class="group h-full flex items-center relative w-full md:w-auto px-4 md:px-0 cursor-pointer">
+                        <div
+                            class="nav-link text-white/85 group-hover:text-white font-medium flex items-center gap-2 h-full py-3 md:py-0 px-3 transition-colors text-sm w-full">
+                            <i class="fa-solid fa-book text-xs"></i>
+                            <span>资源中心</span>
+                            <i
+                                class="fas fa-chevron-down dropdown-arrow text-[10px] ml-1 transition-transform duration-300"></i>
+                        </div>
+                        <div
+                            class="dropdown-menu md:absolute top-full left-0 bg-darkNav min-w-[220px] rounded-lg shadow-xl border-t-2 md:border-t-[3px] border-primary z-50 flex flex-col hidden group-hover:flex md:block md:mt-0 mt-2">
+                            <a href="https://gh-proxy.com/link"
+                                class="flex items-center gap-3 px-4 py-3 text-white/85 hover:text-white hover:bg-primary/15 hover:border-l-[3px] hover:border-primary transition-all text-sm rounded-t-lg border-l-[3px] border-transparent"><i
+                                    class="fa-solid fa-link text-xs w-[18px] text-center"></i><span>友情链接</span></a>
+                            <a href="https://tool.gh-proxy.com/"
+                                class="flex items-center gap-3 px-4 py-3 text-white/85 hover:text-white hover:bg-primary/15 hover:border-l-[3px] hover:border-primary transition-all text-sm rounded-b-lg border-l-[3px] border-transparent"><i
+                                    class="fa-solid fa-toolbox text-xs w-[18px] text-center"></i><span>开发者工具箱</span></a>
+                        </div>
+                    </div>
+
+                    <!-- Support Dropdown -->
+                    <div class="group h-full flex items-center relative w-full md:w-auto px-4 md:px-0 cursor-pointer">
+                        <div
+                            class="nav-link text-white/85 group-hover:text-white font-medium flex items-center gap-2 h-full py-3 md:py-0 px-3 transition-colors text-sm w-full">
+                            <i class="fa-solid fa-heart text-xs"></i>
+                            <span>支持我们</span>
+                            <i
+                                class="fas fa-chevron-down dropdown-arrow text-[10px] ml-1 transition-transform duration-300"></i>
+                        </div>
+                        <div
+                            class="dropdown-menu md:absolute top-full left-0 bg-darkNav min-w-[220px] rounded-lg shadow-xl border-t-2 md:border-t-[3px] border-primary z-50 flex flex-col hidden group-hover:flex md:block md:mt-0 mt-2">
+                            <a href="https://gh-proxy.com/donate/"
+                                class="flex items-center gap-3 px-4 py-3 text-white/85 hover:text-white hover:bg-primary/15 hover:border-l-[3px] hover:border-primary transition-all text-sm rounded-t-lg border-l-[3px] border-transparent"><i
+                                    class="fa-solid fa-hand-holding-dollar text-xs w-[18px] text-center"></i><span>捐赠支持</span></a>
+                            <a href="https://gh-proxy.com/donate/list/donations"
+                                class="flex items-center gap-3 px-4 py-3 text-white/85 hover:text-white hover:bg-primary/15 hover:border-l-[3px] hover:border-primary transition-all text-sm rounded-b-lg border-l-[3px] border-transparent"><i
+                                    class="fa-solid fa-list-check text-xs w-[18px] text-center"></i><span>捐赠列表</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <button id="themeToggleBtn"
+                    class="text-white hover:text-primary transition-colors p-2 rounded-lg hover:bg-white/10 flex items-center justify-center focus:outline-none"
+                    title="切换主题">
+                    <i id="themeToggleIcon" class="fa-solid fa-moon text-lg"></i>
+                </button>
+
+                <!-- Navbar toggle (mobile only) -->
+                <button id="navbarToggle"
+                    class="md:hidden text-white text-xl p-2 hover:bg-white/10 rounded transition-colors focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6 w-full flex-grow">
+        <header class="text-center mb-8 px-4">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-3">GitHub 加速下载代理</h2>
+            <p class="text-lg opacity-85 text-slate-600 max-w-3xl mx-auto">将 GitHub 链接转换为多区域加速链接，解决 GitHub 访问慢、下载失败等问题。
+            </p>
+        </header>
+
+        <main>
+            <!-- Input Card -->
+            <div
+                class="bg-white rounded-xl p-6 sm:p-8 mb-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-200/80 transition-all">
+                <div class="mb-5 relative">
+                    <label for="githubLinkInput"
+                        class="block mb-3 font-semibold text-slate-800 text-lg flex items-center gap-2">
+                        <i class="fas fa-link text-primary"></i>
+                        GitHub 链接
+                    </label>
+                    <input type="text" id="githubLinkInput"
+                        placeholder="输入GitHub链接，例如：https://github.com/sky22333/hubproxy"
+                        class="w-full p-4 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-base transition-all focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/15 placeholder-slate-400 shadow-sm">
+                    <div id="error-message" class="text-error text-sm mt-2 hidden animate-fade-in"><i
+                            class="fas fa-exclamation-circle mr-1"></i><span></span></div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mb-6" id="format-toggle">
+                    <button
+                        class="flex-1 min-w-[100px] px-4 py-3 bg-primary text-white border border-primary font-medium rounded-lg text-sm sm:text-base text-center transition-all active-format shadow-md"
+                        data-value="raw">原始链接</button>
+                    <button
+                        class="flex-1 min-w-[100px] px-4 py-3 bg-slate-50 text-slate-700 border border-slate-200 font-medium rounded-lg text-sm sm:text-base text-center transition-all hover:bg-slate-100 hover:border-slate-300 format-btn"
+                        data-value="git">Git Clone</button>
+                    <button
+                        class="flex-1 min-w-[100px] px-4 py-3 bg-slate-50 text-slate-700 border border-slate-200 font-medium rounded-lg text-sm sm:text-base text-center transition-all hover:bg-slate-100 hover:border-slate-300 format-btn"
+                        data-value="wget">Wget / cURL</button>
+                </div>
+
+                <div class="flex gap-4">
+                    <button id="convertButton"
+                        class="flex-1 bg-primary hover:bg-primaryHover text-white border-none py-4 px-6 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 shadow-[0_4px_10px_rgba(59,130,246,0.2)] hover:shadow-[0_6px_12px_rgba(59,130,246,0.25)] hover:-translate-y-[2px] text-lg active:translate-y-0 disabled:bg-slate-300 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none">
+                        <i class="fas fa-bolt"></i>
+                        转换链接
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ad Banner 
+            <div class="mb-8 w-full">
+                <a href="#" alt="a-d"
+                    target="_blank"
+                    class="block w-full rounded-lg overflow-hidden border border-slate-200 shadow-sm transition-transform hover:scale-[1.005]">
+                    <img src="https://r2.gh-proxy.com/a-d.jpg" alt="a-d"
+                        class="w-full h-auto object-cover max-h-[80px] sm:max-h-[400px] block mx-auto" loading="lazy">
+                </a>
+            </div> -->
+            <div class="mb-8 w-full">
+                <a href="https://gh-proxy.com/go/https://gh-proxy.dgywzc.com/#/register?code=8UanlBEN" alt="dgy"
+                    target="_blank"
+                    class="block w-full rounded-lg overflow-hidden border border-slate-200 shadow-sm transition-transform hover:scale-[1.005]">
+                    <img src="https://r2.gh-proxy.com/dgy800.gif" alt="dgy"
+                        class="w-full h-auto block mx-auto" loading="lazy">
+                </a>
+            </div>
+
+            <!-- Output Area -->
+            <div id="output"
+                class="hidden bg-white rounded-xl p-6 sm:p-8 mb-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-200/80 animate-fade-in">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gradient flex items-center gap-2">
+                        <i class="fas fa-rocket text-primary"></i>
+                        加速拉取链接
+                    </h2>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-6 space-y-6"
+                    id="formattedLinkOutput">
+
+                    <!-- Cloudflare -->
+                    <div class="bg-white border border-slate-200 rounded-lg p-5 shadow-sm link-item">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap text-cf bg-cfBg">
+                                <i class="fas fa-map-marker-alt"></i> cloudflare (v4)
+                            </span>
+                            <span class="text-sm text-slate-600">主站加速，全球高速分发！国内优选和IPv6网络支持请使用优选服务器。</span>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <div id="cfLink"
+                                class="font-mono text-sm leading-relaxed bg-black/5 p-4 rounded-md border border-black/5 break-all text-slate-800">
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-green-500 hover:text-white hover:border-green-500 transition-colors copy-btn"
+                                    data-region="cf">
+                                    <i class="fas fa-copy"></i> 复制链接
+                                </button>
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-primary hover:text-white hover:border-primary transition-colors open-btn"
+                                    data-region="cf">
+                                    <i class="fas fa-external-link-alt"></i> 打开
+                                </button>
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-cdn hover:text-white hover:border-cdn transition-colors qr-btn"
+                                    data-region="cf">
+                                    <i class="fas fa-qrcode"></i> 二维码
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cloudflare v4 -->
+                    <div class="bg-white border border-slate-200 rounded-lg p-5 shadow-sm link-item">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap text-cf bg-cfBg">
+                                <i class="fas fa-map-marker-alt"></i> Cloudflare (v4)
+                            </span>
+                            <span
+                                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold whitespace-nowrap text-hk bg-hkBg">
+                                <i class="fa-solid fa-thumbs-up"></i> 推荐
+                            </span>
+                            <span class="text-sm text-slate-600">优选加速服务器，仅支持IPv4 网络智能解析。</span>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <div id="hkLink"
+                                class="font-mono text-sm leading-relaxed bg-black/5 p-4 rounded-md border border-black/5 break-all text-slate-800">
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-green-500 hover:text-white hover:border-green-500 transition-colors copy-btn"
+                                    data-region="hk">
+                                    <i class="fas fa-copy"></i> 复制链接
+                                </button>
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-primary hover:text-white hover:border-primary transition-colors open-btn"
+                                    data-region="hk">
+                                    <i class="fas fa-external-link-alt"></i> 打开
+                                </button>
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-cdn hover:text-white hover:border-cdn transition-colors qr-btn"
+                                    data-region="hk">
+                                    <i class="fas fa-qrcode"></i> 二维码
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- youxuan / IPv6 -->
+                    <div class="bg-white border border-slate-200 rounded-lg p-5 shadow-sm link-item">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap text-v6 bg-v6Bg">
+                                <i class="fas fa-map-marker-alt"></i> Cloudflare (v4/v6)
+                            </span>
+                            <span class="text-sm text-slate-600">优选加速服务器，支持 IPv6/IPv4 网络智能解析。</span>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <div id="v6Link"
+                                class="font-mono text-sm leading-relaxed bg-black/5 p-4 rounded-md border border-black/5 break-all text-slate-800">
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-green-500 hover:text-white hover:border-green-500 transition-colors copy-btn"
+                                    data-region="v6">
+                                    <i class="fas fa-copy"></i> 复制链接
+                                </button>
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-primary hover:text-white hover:border-primary transition-colors open-btn"
+                                    data-region="v6">
+                                    <i class="fas fa-external-link-alt"></i> 打开
+                                </button>
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-cdn hover:text-white hover:border-cdn transition-colors qr-btn"
+                                    data-region="v6">
+                                    <i class="fas fa-qrcode"></i> 二维码
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fastly -->
+                    <div class="bg-white border border-slate-200 rounded-lg p-5 shadow-sm link-item">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-4">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap text-cdn bg-cdnBg">
+                                <i class="fas fa-map-marker-alt"></i> Fastly (v4)
+                            </span>
+                            <span class="text-sm text-slate-600">Fastly CDN 节点加速。</span>
+                        </div>
+                        <div class="flex flex-col gap-3">
+                            <div id="cdnLink"
+                                class="font-mono text-sm leading-relaxed bg-black/5 p-4 rounded-md border border-black/5 break-all text-slate-800">
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-green-500 hover:text-white hover:border-green-500 transition-colors copy-btn"
+                                    data-region="cdn">
+                                    <i class="fas fa-copy"></i> 复制链接
+                                </button>
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-primary hover:text-white hover:border-primary transition-colors open-btn"
+                                    data-region="cdn">
+                                    <i class="fas fa-external-link-alt"></i> 打开
+                                </button>
+                                <button
+                                    class="flex-1 min-w-[100px] flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 py-2.5 px-4 rounded-md text-sm font-medium hover:bg-cdn hover:text-white hover:border-cdn transition-colors qr-btn"
+                                    data-region="cdn">
+                                    <i class="fas fa-qrcode"></i> 二维码
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-slate-500 text-sm mt-4 flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-exclamation text-primary"></i>
+                        任一子加速节点不可用后预计会在 15 分钟内自动重定向至主站加速。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Configuration and Guides Card -->
+            <div id="guide-card"
+                class="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-200/80 overflow-hidden mb-8">
+                <!-- Tab Headers -->
+                <div class="flex overflow-x-auto border-b border-slate-200 bg-slate-50/50 scrollbar-none"
+                    id="config-tabs">
+                    <button
+                        class="px-5 py-4 font-semibold text-sm border-b-2 border-primary text-primary transition-all focus:outline-none tab-btn whitespace-nowrap"
+                        data-target="shili-tab">正确输入示例</button>
+                    <button
+                        class="px-5 py-4 font-semibold text-sm border-b-2 border-transparent text-slate-600 hover:text-slate-900 transition-all focus:outline-none tab-btn whitespace-nowrap"
+                        data-target="features-tab">功能特点</button>
+                    <button
+                        class="px-5 py-4 font-semibold text-sm border-b-2 border-transparent text-slate-600 hover:text-slate-900 transition-all focus:outline-none tab-btn whitespace-nowrap"
+                        data-target="resources-tab">支持的 GitHub 资源</button>
+                    <button
+                        class="px-5 py-4 font-semibold text-sm border-b-2 border-transparent text-slate-600 hover:text-slate-900 transition-all focus:outline-none tab-btn whitespace-nowrap"
+                        data-target="note-tab">注意事项</button>
+                </div>
+
+                <!-- Tab Contents -->
+                <div class="p-6 sm:p-8" id="tab-contents">
+                    <!-- Tab 1: 正确输入示例 -->
+                    <div id="shili-tab" class="tab-pane block space-y-4">
+                        <h4 class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-list-check text-primary"></i> 正确输入示例
+                        </h4>
+                        <p class="text-sm text-slate-600 mb-4">本加速工具支持转换以下任意格式的 GitHub 资源链接。点击示例文本可自动填入上方输入框并转换：</p>
+                        <div class="relative bg-slate-900 rounded-lg shadow-inner">
+                            <button
+                                class="absolute top-3 right-3 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 py-1.5 px-3 rounded border border-slate-700 transition-all flex items-center gap-1.5 z-10"
+                                onclick="copyCodeBlock('shili-code')">
+                                <i class="fas fa-copy"></i> 复制全部
+                            </button>
+                            <div id="shili-code-container"
+                                class="max-h-[150px] overflow-hidden transition-all duration-300 p-5">
+                                <pre id="shili-code"
+                                    class="text-slate-200 font-mono text-sm leading-relaxed overflow-x-auto cursor-pointer"># 分支源码
+https://github.com/sky22333/hubproxy/archive/refs/heads/main.zip
+
+# raw文件
+https://github.com/sky22333/hubproxy/blob/main/install.sh
+https://raw.githubusercontent.com/sky22333/hubproxy/refs/heads/main/install.sh
+
+# Release源码
+https://github.com/sky22333/hubproxy/archive/refs/tags/v1.1.8.zip
+
+# Release文件
+https://github.com/sky22333/hubproxy/releases/download/v1.1.8/hubproxy-v1.1.8-linux-amd64.tar.gz
+
+# gist
+https://gist.githubusercontent.com/oopsunix/2dbf20f64984773da6740d1d1cf7c2d4/raw/github-blacklist
+
+# api
+https://api.github.com/repos/umami-software/umami
+
+# git
+git clone https://gh-proxy.com/https://github.com/sky22333/hubproxy.git
+
+#nightly.link
+打开网站查看示例https://nightly.link/</pre>
+                            </div>
+                            <div id="shili-code-overlay"
+                                class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-slate-900 to-transparent pointer-events-none transition-opacity duration-300">
+                            </div>
+                        </div>
+                        <div class="flex justify-center mt-3">
+                            <button id="shili-toggle-btn"
+                                class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-md text-sm font-semibold transition-all flex items-center gap-1.5">
+                                <i class="fas fa-chevron-down"></i> 展开全部
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: 功能特点 -->
+                    <div id="features-tab" class="tab-pane hidden space-y-4">
+                        <h4 class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-4">
+                            <i class="fas fa-star text-primary"></i> 功能特点
+                        </h4>
+                        <ul class="space-y-3 text-slate-600 text-sm sm:text-base">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-success mt-1"></i>
+                                <span>支持代理访问 GitHub 的 Releases、Raw、Archive 等资源</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-success mt-1"></i>
+                                <span>自动缓存，提升访问速度</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-success mt-1"></i>
+                                <span>支持大文件下载，无限制</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-success mt-1"></i>
+                                <span>无需配置，直接使用</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-success mt-1"></i>
+                                <span>支持 HTTPS 安全访问</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-success mt-1"></i>
+                                <span>多区域加速节点选择</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-success mt-1"></i>
+                                <span>一键复制加速链接</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tab 3: 支持的 GitHub 资源 -->
+                    <div id="resources-tab" class="tab-pane hidden space-y-4">
+                        <h4 class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-4">
+                            <i class="fas fa-check-circle text-primary"></i> 支持的 GitHub 资源
+                        </h4>
+                        <ul class="space-y-3 text-slate-600 text-sm sm:text-base">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-download text-primary mt-1"></i>
+                                <span>Releases 附件下载 (release assets)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-file-code text-primary mt-1"></i>
+                                <span>Raw 文件内容访问</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-file-archive text-primary mt-1"></i>
+                                <span>仓库打包下载 (archive)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fab fa-git-alt text-primary mt-1"></i>
+                                <span>Git Clone 操作 (部分支持)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-code text-primary mt-1"></i>
+                                <span>Gist 原始文件</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-file-download text-primary mt-1"></i>
+                                <span>项目文件直接下载</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-server text-primary mt-1"></i>
+                                <span>Git api 接口支持</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tab 4: 注意事项 -->
+                    <div id="note-tab" class="tab-pane hidden space-y-4">
+                        <h4 class="text-lg font-bold text-slate-800 flex items-center gap-2 mb-4">
+                            <i class="fas fa-exclamation-triangle text-primary"></i> 注意事项
+                        </h4>
+                        <ul class="space-y-3 text-slate-600 text-sm sm:text-base">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-info-circle text-primary mt-1"></i>
+                                <span>本服务仅供学习研究使用</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-ban text-error mt-1"></i>
+                                <span>请勿滥用，否则可能会被限制访问</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-link text-primary mt-1"></i>
+                                <span>如果遇到问题，请检查链接格式是否正确</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-bookmark text-primary mt-1"></i>
+                                <span>建议收藏本站，以便日后使用</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-sync-alt text-primary mt-1"></i>
+                                <span>转换工具会自动更新，无需手动升级</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fas fa-globe text-primary mt-1"></i>
+                                <span>选择最适合您网络环境的区域节点</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Waline Comment Box -->
+            <div id="waline" class="mt-8 border border-slate-200/80 rounded-xl bg-white p-6 sm:p-8 shadow-sm"></div>
+            <!-- Footer -->
+            <footer class="text-center pt-8 pb-4 mt-8 text-sm text-slate-500 border-t border-slate-200">
+                <p class="mb-1">本站部署为原创后端</p>
+                <p class="mb-1">网页BUG反馈，赞助及广告合作请联系：mail(at)gh-proxy.com</p>
+                <p class="opacity-80 mt-3">© 2022-2026 GitHub加速工具 | 为开发者提供高速稳定的GitHub访问体验</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div id="qrModal" class="fixed inset-0 z-[9990] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="relative bg-white dark:bg-slate-800 rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200/80 dark:border-slate-700/80 transform scale-95 transition-all duration-300" id="qrModalContent">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-qrcode text-primary"></i>
+                    <span>扫描二维码下载</span>
+                </h3>
+                <button id="closeQrModal" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700/50 focus:outline-none">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <!-- Body -->
+            <div class="flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-xl p-6 border border-slate-100 dark:border-slate-800">
+                <canvas id="qrCanvas" class="bg-white p-2 rounded-lg shadow-inner max-w-full h-auto"></canvas>
+                <p id="qrModalTip" class="text-xs text-slate-500 dark:text-slate-400 mt-4 text-center">
+                    使用手机相机或扫码软件扫描上方二维码
+                </p>
+            </div>
+
+            <!-- Footer / Info -->
+            <div class="mt-4">
+                <div class="text-xs text-slate-400 dark:text-slate-500 mb-1">加速链接</div>
+                <div id="qrModalLink" class="font-mono text-xs p-2.5 bg-slate-50 dark:bg-slate-900 rounded border border-slate-100 dark:border-slate-800 break-all text-slate-600 dark:text-slate-400 select-all max-h-[80px] overflow-y-auto"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="fixed bottom-5 right-5 z-[9999] flex flex-col gap-3 max-w-sm w-full px-4"></div>
+
+    <script>
+        const Elements = {
+            input: document.getElementById('githubLinkInput'),
+            errorMsg: document.getElementById('error-message'),
+            outputArea: document.getElementById('output'),
+            cfLink: document.getElementById('cfLink'),
+            hkLink: document.getElementById('hkLink'),
+            cdnLink: document.getElementById('cdnLink'),
+            v6Link: document.getElementById('v6Link'),
+            formatToggle: document.getElementById('format-toggle'),
+            convertBtn: document.getElementById('convertButton'),
+            navbarToggle: document.getElementById('navbarToggle'),
+            navbarLinks: document.getElementById('navbarLinks'),
+            formattedLinkOutput: document.getElementById('formattedLinkOutput'),
+            errorText: document.querySelector('#error-message span')
+        };
+
+        const REGIONS = [
+            { id: 'cf', name: 'cloudflare (v4)', domain: 'gh-proxy.org' },
+            { id: 'hk', name: 'Cloudflare (v4)', domain: 'v4.gh-proxy.org' },
+            { id: 'v6', name: 'Cloudflare (v4/v6)', domain: 'v6.gh-proxy.org' },
+            { id: 'cdn', name: 'Fastly (v4)', domain: 'cdn.gh-proxy.org' }
+        ];
+
+        function toggleNavMenu() {
+            const isHidden = Elements.navbarLinks.classList.contains('hidden');
+            if (isHidden) {
+                Elements.navbarLinks.classList.remove('hidden');
+                Elements.navbarLinks.classList.remove('mobile-menu-enter');
+                Elements.navbarLinks.classList.add('mobile-menu-show');
+            } else {
+                Elements.navbarLinks.classList.add('mobile-menu-enter');
+                Elements.navbarLinks.classList.remove('mobile-menu-show');
+                setTimeout(() => Elements.navbarLinks.classList.add('hidden'), 300);
+            }
+        }
+
+        function showToast(message, isError = false) {
+            const toast = document.createElement('div');
+            toast.className = `bg-white text-slate-800 px-5 py-4 rounded-lg shadow-[0_5px_15px_rgba(0,0,0,0.1)] border-l-4 flex items-center gap-3 toast-enter ${isError ? 'border-error' : 'border-success'}`;
+            toast.innerHTML = `<i class="${isError ? 'fas fa-exclamation-circle text-error' : 'fas fa-check-circle text-success'} text-xl"></i> <span class="font-medium">${message}</span>`;
+            document.getElementById('toast-container').appendChild(toast);
+
+            // Trigger reflow
+            void toast.offsetWidth;
+
+            toast.classList.add('toast-show');
+
+            setTimeout(() => {
+                toast.classList.remove('toast-show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function displayError(message) {
+            Elements.errorText.textContent = message || '';
+            if (message) {
+                Elements.errorMsg.classList.remove('hidden');
+            } else {
+                Elements.errorMsg.classList.add('hidden');
+            }
+        }
+
+        function generateLinks(userInput, format) {
+            let originalUrl = userInput.trim();
+
+            // Remove 'git clone ' or similar prefixes if entered by user
+            originalUrl = originalUrl.replace(/^(git\s+clone\s+|wget\s+|curl\s+-O\s+)/i, '');
+
+            // Clean quotes
+            originalUrl = originalUrl.replace(/^["']|["']$/g, '');
+
+            if (!originalUrl) {
+                return { error: '请输入有效的 GitHub 相关链接' };
+            }
+
+            if (!originalUrl.includes('.') && originalUrl.includes('/')) {
+                originalUrl = `https://github.com/${originalUrl}`;
+            } else if (!originalUrl.startsWith('http://') && !originalUrl.startsWith('https://')) {
+                originalUrl = `https://${originalUrl}`;
+            }
+
+            try {
+                const url = new URL(originalUrl);
+                const validHostnames = ['github.com', 'raw.githubusercontent.com', 'gist.github.com', 'gist.githubusercontent.com', 'api.github.com'];
+                if (!validHostnames.some(domain => url.hostname === domain || url.hostname.endsWith('.' + domain))) {
+                    return { error: '请输入有效的 GitHub 相关链接' };
+                }
+
+                let finalUrlForProxy = url.href;
+                if (format === 'git') {
+                    const allowedGitHosts = ['github.com', 'www.github.com'];
+                    if (!allowedGitHosts.includes(url.hostname)) {
+                        return { error: 'Git Clone 功能仅支持 github.com 的仓库链接。' };
+                    }
+                    const parts = url.pathname.split('/').filter(part => part);
+                    if (parts.length < 2) {
+                        return { error: 'Git Clone 需要一个有效的仓库链接 (例如 user/repo)' };
+                    }
+                    const user = parts[0];
+                    const repo = parts[1].replace(/\.git$/, '');
+                    finalUrlForProxy = `${url.origin}/${user}/${repo}.git`;
+                }
+
+                return REGIONS.map(region => {
+                    const baseUrl = `https://${region.domain}/${finalUrlForProxy}`;
+                    if (format === 'git') {
+                        return `git clone ${baseUrl}`;
+                    } else if (format === 'wget') {
+                        return `wget "${baseUrl}"`;
+                    } else {
+                        return baseUrl;
+                    }
+                });
+            } catch (e) {
+                return { error: '请输入一个有效的 URL 格式' };
+            }
+        }
+
+        function safeCopyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text).then(() => true).catch(() => false);
+            }
+            try {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.opacity = '0';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                const success = document.execCommand('copy');
+                document.body.removeChild(textArea);
+                return Promise.resolve(!!success);
+            } catch (err) {
+                console.error('复制失败:', err);
+                return Promise.resolve(false);
+            }
+        }
+
+        function handleConversion() {
+            displayError();
+            const userInput = Elements.input.value;
+
+            if (!userInput.trim()) {
+                Elements.outputArea.classList.add('hidden');
+                showToast('请输入 GitHub 相关链接', true);
+                return;
+            }
+
+            const activeBtn = Elements.formatToggle.querySelector('.active-format');
+            const selectedFormat = activeBtn ? activeBtn.dataset.value : 'raw';
+            const result = generateLinks(userInput, selectedFormat);
+
+            if (result.error) {
+                displayError(result.error);
+                Elements.outputArea.classList.add('hidden');
+                showToast(result.error, true);
+            } else {
+                Elements.cfLink.textContent = result[0];
+                Elements.hkLink.textContent = result[1];
+                Elements.v6Link.textContent = result[2];
+                Elements.cdnLink.textContent = result[3];
+
+                Elements.outputArea.classList.remove('hidden');
+
+                const openButtons = document.querySelectorAll('.open-btn');
+                openButtons.forEach(btn => {
+                    btn.style.display = selectedFormat === 'raw' ? 'flex' : 'none';
+                });
+
+                const qrButtons = document.querySelectorAll('.qr-btn');
+                qrButtons.forEach(btn => {
+                    btn.style.display = selectedFormat === 'raw' ? 'flex' : 'none';
+                });
+
+                document.querySelectorAll('.link-item').forEach((container, index) => {
+                    container.style.opacity = 0;
+                    container.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        container.style.transition = 'all 0.4s ease';
+                        container.style.opacity = 1;
+                        container.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+
+                showToast('链接转换成功！');
+            }
+        }
+
+        function copyCodeBlock(id) {
+            const preElement = document.getElementById(id);
+            if (!preElement) return;
+            safeCopyToClipboard(preElement.innerText).then(success => {
+                if (success) {
+                    showToast('已复制配置内容到剪贴板');
+                } else {
+                    showToast('复制失败，请手动复制', true);
+                }
+            });
+        }
+
+        const qrModal = document.getElementById('qrModal');
+        const qrModalContent = document.getElementById('qrModalContent');
+        const closeQrModalBtn = document.getElementById('closeQrModal');
+        const qrCanvas = document.getElementById('qrCanvas');
+        const qrModalLink = document.getElementById('qrModalLink');
+
+        function openQrModal(linkText) {
+            qrModalLink.textContent = linkText;
+            
+            // Generate QR code
+            QRCode.toCanvas(qrCanvas, linkText, {
+                width: 220,
+                margin: 1,
+                color: {
+                    dark: '#0f172a',
+                    light: '#ffffff'
+                }
+            }, function (error) {
+                if (error) {
+                    console.error(error);
+                    showToast('生成二维码失败', true);
+                    return;
+                }
+                
+                // Show modal with animation
+                qrModal.classList.remove('opacity-0', 'pointer-events-none');
+                qrModalContent.classList.remove('scale-95');
+                qrModalContent.classList.add('scale-100');
+            });
+        }
+
+        function closeQrModal() {
+            qrModal.classList.add('opacity-0', 'pointer-events-none');
+            qrModalContent.classList.remove('scale-100');
+            qrModalContent.classList.add('scale-95');
+        }
+
+        function initTheme() {
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+            const themeToggleIcon = document.getElementById('themeToggleIcon');
+
+            function updateThemeUI() {
+                const isDark = document.documentElement.classList.contains('dark');
+                if (isDark) {
+                    themeToggleIcon.className = 'fa-solid fa-sun text-lg';
+                } else {
+                    themeToggleIcon.className = 'fa-solid fa-moon text-lg';
+                }
+            }
+
+            // Initialize UI on load
+            updateThemeUI();
+
+            themeToggleBtn.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.contains('dark');
+                if (isDark) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+                updateThemeUI();
+            });
+        }
+
+        function initPage() {
+            // Output links copy click handler
+            Elements.formattedLinkOutput.addEventListener('click', function (event) {
+                const copyBtn = event.target.closest('.copy-btn');
+                const openBtn = event.target.closest('.open-btn');
+                const qrBtn = event.target.closest('.qr-btn');
+                if (copyBtn) {
+                    const region = copyBtn.dataset.region;
+                    const linkElement = document.getElementById(`${region}Link`);
+                    safeCopyToClipboard(linkElement.textContent).then(success => {
+                        if (success) {
+                            const regionName = REGIONS.find(r => r.id === region)?.name || region;
+                            showToast(`已复制 ${regionName} 加速链接`);
+                        } else {
+                            showToast('复制失败，请手动复制', true);
+                        }
+                    });
+                }
+                if (openBtn) {
+                    const region = openBtn.dataset.region;
+                    const linkElement = document.getElementById(`${region}Link`);
+                    window.open(linkElement.textContent, '_blank');
+                }
+                if (qrBtn) {
+                    const region = qrBtn.dataset.region;
+                    const linkElement = document.getElementById(`${region}Link`);
+                    if (linkElement && linkElement.textContent) {
+                        openQrModal(linkElement.textContent.trim());
+                    }
+                }
+            });
+
+            // QR Modal listeners
+            if (closeQrModalBtn && qrModal) {
+                closeQrModalBtn.addEventListener('click', closeQrModal);
+                qrModal.addEventListener('click', (e) => {
+                    if (e.target === qrModal) {
+                        closeQrModal();
+                    }
+                });
+            }
+
+            Elements.formatToggle.addEventListener('click', (e) => {
+                const button = e.target.closest('button');
+                if (!button || button.classList.contains('active-format')) return;
+
+                Array.from(Elements.formatToggle.children).forEach(btn => {
+                    btn.className = 'flex-1 min-w-[100px] px-4 py-3 bg-slate-50 text-slate-700 border border-slate-200 font-medium rounded-lg text-sm sm:text-base text-center transition-all hover:bg-slate-100 hover:border-slate-300 format-btn';
+                    btn.classList.remove('active-format');
+                });
+
+                button.className = 'flex-1 min-w-[100px] px-4 py-3 bg-primary text-white border border-primary font-medium rounded-lg text-sm sm:text-base text-center transition-all active-format shadow-md';
+                button.classList.add('active-format');
+
+                if (Elements.input.value.trim()) {
+                    handleConversion();
+                }
+            });
+
+            // Tab switcher
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Reset all tab headers
+                    tabButtons.forEach(b => {
+                        b.classList.remove('border-primary', 'text-primary');
+                        b.classList.add('border-transparent', 'text-slate-600');
+                    });
+                    // Highlight active tab header
+                    btn.classList.remove('border-transparent', 'text-slate-600');
+                    btn.classList.add('border-primary', 'text-primary');
+
+                    // Hide all tab panes
+                    document.querySelectorAll('.tab-pane').forEach(pane => {
+                        pane.classList.remove('block');
+                        pane.classList.add('hidden');
+                    });
+                    // Show target tab pane
+                    const targetId = btn.dataset.target;
+                    const targetPane = document.getElementById(targetId);
+                    if (targetPane) {
+                        targetPane.classList.remove('hidden');
+                        targetPane.classList.add('block');
+                    }
+                });
+            });
+
+            Elements.convertBtn.addEventListener('click', handleConversion);
+
+            Elements.input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleConversion();
+                }
+            });
+
+            // Collapsible container for shili-code
+            const shiliContainer = document.getElementById('shili-code-container');
+            const shiliOverlay = document.getElementById('shili-code-overlay');
+            const shiliToggleBtn = document.getElementById('shili-toggle-btn');
+            if (shiliContainer && shiliOverlay && shiliToggleBtn) {
+                shiliToggleBtn.addEventListener('click', () => {
+                    const isCollapsed = shiliContainer.classList.contains('max-h-[150px]');
+                    if (isCollapsed) {
+                        shiliContainer.classList.remove('max-h-[150px]');
+                        shiliOverlay.classList.add('opacity-0');
+                        shiliToggleBtn.innerHTML = '<i class="fas fa-chevron-up"></i> 收起';
+                    } else {
+                        shiliContainer.classList.add('max-h-[150px]');
+                        shiliOverlay.classList.remove('opacity-0');
+                        shiliToggleBtn.innerHTML = '<i class="fas fa-chevron-down"></i> 展开全部';
+                    }
+                });
+            }
+
+            Elements.navbarToggle.addEventListener('click', toggleNavMenu);
+            initTheme();
+        }
+
+        // Mobile dropdown interaction
+        document.querySelectorAll('#navbarLinks .group').forEach(item => {
+            const link = item.querySelector('.nav-link');
+            const dropdown = item.querySelector('.dropdown-menu');
+
+            if (dropdown && link) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth < 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        document.querySelectorAll('#navbarLinks .group').forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('active');
+                            }
+                        });
+                        item.classList.toggle('active');
+                    }
+                });
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 768 && !Elements.navbarLinks.classList.contains('hidden') && !e.target.closest('nav')) {
+                toggleNavMenu();
+            }
+        });
+
+        // Click handler to run example link on click
+        document.getElementById('shili-code').addEventListener('click', (e) => {
+            const text = e.currentTarget.innerText;
+            const clickedText = window.getSelection().toString().trim();
+            if (clickedText && (clickedText.startsWith('http') || clickedText.startsWith('git clone'))) {
+                // If user selected text, do nothing
+                return;
+            }
+
+            // Find click position or line
+            const selection = window.getSelection();
+            if (!selection.rangeCount) return;
+
+            const range = selection.getRangeAt(0);
+            const container = range.startContainer;
+            const textContent = container.textContent;
+
+            // Extract the line clicked
+            const offset = range.startOffset;
+            let start = offset;
+            while (start > 0 && textContent[start - 1] !== '\n') {
+                start--;
+            }
+            let end = offset;
+            while (end < textContent.length && textContent[end] !== '\n') {
+                end++;
+            }
+            let line = textContent.substring(start, end).trim();
+
+            // Check if it's git clone pattern or raw links
+            if (line.includes('git:git clone ')) {
+                line = line.substring(line.indexOf('https://'));
+            } else if (line.startsWith('git clone ')) {
+                line = line.replace('git clone ', '');
+            } else if (line.includes('：https://')) {
+                line = line.substring(line.indexOf('https://'));
+            } else if (line.includes(':https://')) {
+                line = line.substring(line.indexOf('https://'));
+            }
+
+            if (line && (line.startsWith('http://') || line.startsWith('https://'))) {
+                Elements.input.value = line;
+                handleConversion();
+                // Scroll to input card smoothly
+                Elements.input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+
+        initPage();
+    </script>
+    <script>
+        /**
+         *
+         * Waline 评论系统初始化
+         *
+         */
+        document.addEventListener('DOMContentLoaded', async function () {
+            const { init } = await import('https://cdnjs.cloudflare.com/ajax/libs/waline/3.6.0/waline.js');
+
+            const waline = init({
+                el: "#waline",
+                serverURL: "https://waline.gh-proxy.com",
+                path: "comment", // 当前文章页路径，用于区分不同的文章页
+                dark: 'html.dark',
+                pageSize: 5,
+                copyright: true,
+                reaction: [
+                    "https://npm.elemecdn.com/@waline/emojis@1.1.0/bilibili/bb_heart_eyes.png",
+                    "https://npm.elemecdn.com/@waline/emojis@1.1.0/bilibili/bb_thumbsup.png",
+                    "https://npm.elemecdn.com/@waline/emojis@1.1.0/bilibili/bb_zhoumei.png",
+                    "https://npm.elemecdn.com/@waline/emojis@1.1.0/bilibili/bb_grievance.png",
+                    "https://npm.elemecdn.com/@waline/emojis@1.1.0/bilibili/bb_dizzy_face.png",
+                    "https://npm.elemecdn.com/@waline/emojis@1.1.0/bilibili/bb_slap.png",
+                ],
+                locale: {
+                    placeholder: "请留言。(填写邮箱可在被回复时收到邮件提醒)",
+                    reaction0: "非常有用",
+                    reaction1: "有帮助",
+                    reaction2: "一般",
+                    reaction3: "无帮助",
+                    reaction4: "看不懂",
+                    reaction5: "有错误",
+                    reactionTitle: "本站内容对你有帮助吗？",
+                    sofa: "还没有人留言哦！快来抢沙发吧~",
+                    comment: "留言",
+                },
+                emoji: [
+                    'https://r2.gh-proxy.com/emojis/blobs',
+                    "https://r2.gh-proxy.com/emojis/bmoji",
+                    "https://r2.gh-proxy.com/emojis/bilibili",
+                    "https://r2.gh-proxy.com/emojis/weibo",
+                    'https://r2.gh-proxy.com/emojis/qq',
+                    'https://r2.gh-proxy.com/emojis/tieba',
+                    'https://r2.gh-proxy.com/emojis/alus'
+                ],
+                imageUploader: false,
+                search: false,
+            });
+
+            // Image lazy loader fallback
+            const lazyImages = [].slice.call(document.querySelectorAll("img[data-src]"));
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.removeAttribute("data-src");
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+                lazyImages.forEach(function (lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            } else {
+                lazyImages.forEach(function (lazyImage) {
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.removeAttribute("data-src");
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
