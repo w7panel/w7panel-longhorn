@@ -6,10 +6,15 @@ metadata:
   labels:
     {{- include "w7panel-longhorn.labels" . | nindent 4 }}
 spec:
-  chart: https://cdn.w7.cc/w7panel/charts/longhorn-1.11.1.tgz
-  version: v1.11.1
+  chart: https://cdn.w7.cc/w7panel/charts/longhorn/longhorn-{{ .Chart.AppVersion }}.tgz
+  version: v{{ .Chart.AppVersion }}
   targetNamespace: longhorn-system
   createNamespace: true
+  #
+  # failurePolicy: abort 只是不让它自动卸载旧 release，不代表能直接从 uninstalling 状态继续安装。你现在这个 release 已经卡在 uninstalling，后续仍然需要手动处理 Longhorn 残留资源或 Helm
+  # release 状态，否则安装可能会继续失败，只是不再自动执行 helm uninstall --wait
+  #
+  failurePolicy: abort 
   set:
     longhornUI.replicas: 0
     csi.attacherReplicaCount: 1

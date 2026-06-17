@@ -39,6 +39,6 @@ kubectl -n longhorn-system patch -p '{"value": "true"}' --type=merge lhs deletin
 
 # 地址 
 https://charts.longhorn.io/index.yaml
-https://github.com/longhorn/charts/releases/download/longhorn-1.12.0/longhorn-1.12.0.tgz
+https://github.com/longhorn/charts/releases/download/longhorn-1.11.1/longhorn-1.11.1.tgz
 
 # 制品库发布
