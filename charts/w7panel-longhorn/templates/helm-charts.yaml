@@ -17,6 +17,8 @@ spec:
   failurePolicy: abort 
   set:
     longhornUI.replicas: 0
+    persistence.createStorageClass: "false"
+    defaultSettings.defaultLonghornStaticStorageClass: ""
     csi.attacherReplicaCount: 1
     csi.provisionerReplicaCount: 1
     csi.resizerReplicaCount: 1
