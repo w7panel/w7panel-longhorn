@@ -60,3 +60,40 @@ jobs:
         with:
           tag_name: ${{ steps.tag.outputs.value }}
           files: charts/*.tgz
+      - name: Push zpk
+        env:
+          ZPK_DOCKER_USERNAME: ${{ secrets.ZPK_DOCKER_USERNAME }}
+          ZPK_DOCKER_PASSWORD: ${{ secrets.ZPK_DOCKER_PASSWORD }}
+        run: |
+          sudo curl -L --fail -o /usr/local/bin/zpk https://github.com/w7panel/w7panel-zpk/releases/download/latest/zpk_linux_amd64
+          sudo chmod +x /usr/local/bin/zpk
+          RELEASE_TAG="${{ steps.tag.outputs.value }}"
+          set -euo pipefail
+
+          if [ -z "${ZPK_DOCKER_USERNAME}" ]; then
+            echo "ZPK_DOCKER_USERNAME secret is required"
+            exit 1
+          fi
+          if [ -z "${ZPK_DOCKER_PASSWORD}" ]; then
+            echo "ZPK_DOCKER_PASSWORD secret is required"
+            exit 1
+          fi
+          if [ -z "${ZPK_HOST}" ]; then
+            echo "ZPK_HOST is required"
+            exit 1
+          fi
+          if [ -z "${ZPK_ARTIFACT}" ]; then
+            echo "ZPK_ARTIFACT is required"
+            exit 1
+          fi
+
+          HELM_PACKAGE="$(ls charts/*.tgz | head -n 1)"
+          if [ -z "${HELM_PACKAGE}" ]; then
+            echo "helm package not found under charts/"
+            exit 1
+          fi
+
+          zpk login --username="${ZPK_DOCKER_USERNAME}" --password="${ZPK_DOCKER_PASSWORD}" --host="${ZPK_HOST}"
+          zpk use "zpk.w7.cc/zpk_oci/${ZPK_ARTIFACT}:${RELEASE_TAG}"
+          zpk attach add --path="${HELM_PACKAGE}" --type=helm
+          zpk push    
