@@ -16,7 +16,8 @@ permissions:
 env:
   CHART_DIR: charts/w7panel-longhorn
   CHART_PACKAGE_DIR: charts
-
+  ZPK_HOST: zpk.w7.cc
+  ZPK_ARTIFACT: w7panel-longhorn
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -94,6 +95,6 @@ jobs:
           fi
 
           zpk login --username="${ZPK_DOCKER_USERNAME}" --password="${ZPK_DOCKER_PASSWORD}" --host="${ZPK_HOST}"
-          zpk use "zpk.w7.cc/zpk_oci/${ZPK_ARTIFACT}:${RELEASE_TAG}"
+          zpk use "${ZPK_HOST}/zpk_oci/${ZPK_ARTIFACT}:${RELEASE_TAG}"
           zpk attach add --path="${HELM_PACKAGE}" --type=helm
           zpk push    
